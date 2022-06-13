@@ -23,13 +23,19 @@ router.post('/', [
 router.put('/:id', [
     validarJWT,
     check('id', 'El id del calendario no es válido').isMongoId(),
-    validarUsuario('AdminOCreador_Calendario'),
+    validarUsuario({
+        metodo: 'RangoOCreador',
+        modelo: "C"
+    }),
     validarCampos
 ], updateCalendario);
 router.delete('/:id', [
     validarJWT,
     check('id', 'El id del calendario no es válido').isMongoId(),
-    validarUsuario('AdminOCreador_Calendario'),
+    validarUsuario({
+        metodo: 'RangoOCreador',
+        modelo: "C"
+    }),
     validarCampos
 ], deleteCalendario);
 module.exports = router;

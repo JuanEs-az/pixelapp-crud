@@ -26,14 +26,18 @@ router.post('/', [
 router.put('/:id', [
     validarJWT,
     check('id', 'El id del usuario no es válido').isMongoId(),
-    validarUsuario('AdminOIDUsuario'),
+    validarUsuario({
+        metodo: 'RangoOUsuario',
+    }),
     validarCampos
 ], updateUsuario);
 
 router.delete('/:id', [
     validarJWT,
     check('id', 'El id del usuario no es válido').isMongoId(),
-    validarUsuario('AdminOIDUsuario'),
+    validarUsuario({
+        metodo: 'RangoOUsuario',
+    }),
     validarCampos
 ], deleteUsuario);
 module.exports = router;

@@ -17,7 +17,7 @@ router.get('/', getRoles);
 
 router.post('/', [
     validarJWT,
-    validarUsuario("Admin"),
+    validarUsuario(),
     check('nombre', 'El nombre es obligatorio').not().isEmpty(),
     check('rango', 'El rango es obligatorio').not().isEmpty(),
     check('color', 'El color es obligatorio').not().isEmpty(),
@@ -26,13 +26,13 @@ router.post('/', [
 
 router.put('/', [
     validarJWT,
-    validarUsuario("Admin"),
+    validarUsuario(),
     validarCampos
 ], updateRol);
 
 router.delete('/', [
     validarJWT,
-    validarUsuario("Admin"),
+    validarUsuario(),
     validarCampos
 ], deleteRol);
 module.exports = router;
